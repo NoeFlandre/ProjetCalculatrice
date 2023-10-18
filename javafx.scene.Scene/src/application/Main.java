@@ -22,7 +22,7 @@ public class Main extends Application {
     	
     
         
-        // Create the controler 
+        // Create the controler (test)
         
         CalculatorControler controler = new CalculatorControler();
         
