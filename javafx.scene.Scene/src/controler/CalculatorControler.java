@@ -7,7 +7,7 @@ import Model.CalculatorModelInterface;
 
 public class CalculatorControler implements CalculatorControlerInterface {
 	
-	public CalculatorModel model;
+	private CalculatorModel model;
 	
 	public CalculatorControler() {
         model = new CalculatorModel(); // Initialize the calculator model
@@ -30,6 +30,10 @@ public class CalculatorControler implements CalculatorControlerInterface {
 	// Method to add the value of a button to the stack
     public void addButtonValueToStack(double value) {
         model.push(value);
+    }
+    
+    public double calculate() {
+    	return model.getAccumulator();
     }
 	
 	public void performOperation(String operation) {
@@ -55,9 +59,6 @@ public class CalculatorControler implements CalculatorControlerInterface {
 	                break;
 	            case "opposite":
 	                model.opposite();
-	                break;
-	            case "equals":
-	                model.getAccumulator();
 	                break;
 	            default:
 	            	System.out.println("Invalid operation: " + operation);

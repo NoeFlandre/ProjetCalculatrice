@@ -86,10 +86,9 @@ public class Main extends Application {
         });
         
         equalsButton.setOnAction(event -> {
-        	controler.performOperation("equals"); // Call the controller's calculate method (for example, to display the result)
        
          // Update the view with the new accumulator value
-            double accumulatorValue = controler.model.getAccumulator(); 
+            double accumulatorValue = controler.calculate();; 
             accumulatorLabel.setText("Result: " + accumulatorValue); 
         });
 
