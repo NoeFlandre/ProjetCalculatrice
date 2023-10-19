@@ -68,6 +68,11 @@ public class Main extends Application {
         buttonGrid.add(divideButton, 3, 3);
         buttonGrid.add(equalsButton, 2, 3);
         
+     // Create a numeric button for "Enter"
+        Button enterButton = new Button("Enter");
+        enterButton.setMinSize(40, 40);
+        buttonGrid.add(enterButton, 1, 3);
+        
      // Add event handlers to operator buttons
         addButton.setOnAction(event -> {
             controler.performOperation("add"); // Call the controller's addition method
