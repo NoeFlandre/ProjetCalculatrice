@@ -29,9 +29,10 @@ public class Main extends Application {
         VBox root = new VBox();
         Scene scene = new Scene(root, 400, 400);
 
-        // Create the accumulator view
         accumulatorLabel = new Label("Result: 0");
+        
         accumulatorLabel.setMinHeight(40);
+
 
        
 
@@ -45,6 +46,12 @@ public class Main extends Application {
             Button digitButton = new Button(Integer.toString(i));
             digitButton.setMinSize(40, 40);
             buttonGrid.add(digitButton, (9 - i) % 3, (9 - i) / 3);
+            
+            digitButton.setStyle(
+                    "-fx-background-color: #3c4043; " + // Dark gray background color
+                    "-fx-text-fill: white; " + // White text color for better visibility
+                    "-fx-font-size: 18px;" // Font size
+                );
 
             // Set the link with the stack for each button being clicked
             digitButton.setOnAction(event -> {
@@ -63,7 +70,14 @@ public class Main extends Application {
         Button multiplyButton = new Button("*");
         Button divideButton = new Button("/");
         Button equalsButton = new Button("=");
+        equalsButton.setMinSize(40, 40);
+        addButton.setMinSize(40, 40);
+        subtractButton.setMinSize(40, 40);
+        divideButton.setMinSize(40, 40);
+        multiplyButton.setMinSize(40, 40);
 
+       
+        
         buttonGrid.add(addButton, 3, 0);
         buttonGrid.add(subtractButton, 3, 1);
         buttonGrid.add(multiplyButton, 3, 2);
@@ -73,17 +87,17 @@ public class Main extends Application {
      // Create a numeric button for "Enter"
         Button enterButton = new Button("Enter");
         enterButton.setMinSize(40, 40);
-        buttonGrid.add(enterButton, 1, 3);
+        buttonGrid.add(enterButton, 2, 4);
         
      // Create the "Clear" button
         Button clearButton = new Button("Clear");
         clearButton.setMinSize(40, 40);
-        buttonGrid.add(clearButton, 1, 4);
+        buttonGrid.add(clearButton, 3, 4);
         
      // Create the "Comma" button
         Button commaButton = new Button(",");
         commaButton.setMinSize(40, 40);
-        buttonGrid.add(commaButton, 0, 4);
+        buttonGrid.add(commaButton, 1, 3);
         
      // Add event handlers to operator buttons
         addButton.setOnAction(event -> {
@@ -134,7 +148,57 @@ public class Main extends Application {
             // Update the accumulator label to show the cleared accumulator
             accumulatorLabel.setText("Accumulator: 0");
         });
-       
+        
+ // Set style for the buttons
+        
+        equalsButton.setStyle(
+        	    "-fx-font-size: 15px; " + // Increase the font size
+        	    "-fx-background-color: #8ab4f9; " + // Set a background color (blue in this example)
+        	    "-fx-text-fill: white;" // Set the text color to white
+        	);
+        
+        clearButton.setStyle(
+        		"-fx-background-color: #B30000; "  + // Set the background color to red
+        	    "-fx-text-fill: white;" // Set the text color to white for better visibility
+        	);
+        
+     // Set the style for the operator buttons
+        String operatorButtonStyle = "-fx-background-color: #5f6369; " + // Dark gray background color
+                                   "-fx-text-fill: white; " + // White text color for better visibility
+                                   "-fx-font-size: 18px;"; // Font size
+
+        addButton.setStyle(operatorButtonStyle);
+        subtractButton.setStyle(operatorButtonStyle);
+        multiplyButton.setStyle(operatorButtonStyle);
+        divideButton.setStyle(operatorButtonStyle);
+        equalsButton.setStyle(operatorButtonStyle);
+        commaButton.setStyle(operatorButtonStyle);
+        
+     // Set the style for the "Enter" button as a dark green button
+        String enterButtonStyle = "-fx-background-color: #006400; " + // Dark green background color
+                                "-fx-text-fill: white; ";  // White text color for better visibility
+                             
+
+        enterButton.setStyle(enterButtonStyle);
+        
+     // Create a border style for the label
+        String labelBorderStyle = "-fx-border-color: #5f6369; " + // Dark gray border color
+                                "-fx-border-width: 2px; " + // Border width
+                                "-fx-border-radius: 5px;"; // Border corner radius
+
+        // Set the style for the "Result" label
+        accumulatorLabel.setStyle(
+            "-fx-font-size: 14px; " + // Decrease the font size
+            "-fx-font-weight: normal; " + // Remove bold font weight
+            "-fx-padding: 5px; " + // Reduce the padding
+            "-fx-background-color: #E0E0E0; " + // Set a light gray background color
+            "-fx-background-insets: 0; " + // Remove background insets
+            "-fx-background-radius: 0; " + // Remove background radius
+            labelBorderStyle // Add the border style
+        );
+        accumulatorLabel.setMinHeight(40);
+
+
 
 
         // Add the views and button grid to the root VBox
