@@ -80,6 +80,11 @@ public class Main extends Application {
         clearButton.setMinSize(40, 40);
         buttonGrid.add(clearButton, 1, 4);
         
+     // Create the "Comma" button
+        Button commaButton = new Button(",");
+        commaButton.setMinSize(40, 40);
+        buttonGrid.add(commaButton, 0, 4);
+        
      // Add event handlers to operator buttons
         addButton.setOnAction(event -> {
             controler.performOperation("add"); // Call the controller's addition method
