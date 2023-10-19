@@ -27,7 +27,7 @@ public class Main extends Application {
         CalculatorControler controler = new CalculatorControler();
         
         VBox root = new VBox();
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 220, 300);
 
         accumulatorLabel = new Label("Result: 0");
         
@@ -207,6 +207,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("RPN Calculator");
         primaryStage.show();
+        
+        
     }
 
     public static void main(String[] args) {
