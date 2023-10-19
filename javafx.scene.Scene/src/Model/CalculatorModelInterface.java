@@ -11,5 +11,6 @@ public interface CalculatorModelInterface {
     void divide();
     void opposite();
     void multiply();
+    void enter();
 }
 

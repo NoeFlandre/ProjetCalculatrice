@@ -15,7 +15,7 @@ import controler.CalculatorControler;
 
 public class Main extends Application {
     private Label accumulatorLabel;
-   
+    private String inputBuffer = "";
 
     @Override
     public void start(Stage primaryStage) {
@@ -48,8 +48,10 @@ public class Main extends Application {
 
             // Set the link with the stack for each button being clicked
             digitButton.setOnAction(event -> {
-                double value = Double.parseDouble(digitButton.getText());
-                controler.addButtonValueToStack(value); 
+                // Append the clicked digit to the input buffer
+                inputBuffer += digitButton.getText();
+                // Update the accumulator label to show the current state of the input buffer
+                accumulatorLabel.setText("Accumulator: " + inputBuffer);
             });
         }
 
@@ -73,6 +75,11 @@ public class Main extends Application {
         enterButton.setMinSize(40, 40);
         buttonGrid.add(enterButton, 1, 3);
         
+     // Create the "Clear" button
+        Button clearButton = new Button("Clear");
+        clearButton.setMinSize(40, 40);
+        buttonGrid.add(clearButton, 1, 4);
+        
      // Add event handlers to operator buttons
         addButton.setOnAction(event -> {
             controler.performOperation("add"); // Call the controller's addition method
@@ -95,9 +102,33 @@ public class Main extends Application {
          // Update the view with the new accumulator value
             double accumulatorValue = controler.calculate();; 
             accumulatorLabel.setText("Result: " + accumulatorValue); 
+            
+            controler.clearAccumulator();
         });
-
-     
+        
+        enterButton.setOnAction(event -> {
+            if (!inputBuffer.isEmpty()) {
+                // Convert the input buffer to a numeric value and push it onto the stack
+                double value = Double.parseDouble(inputBuffer);
+                controler.addButtonValueToStack(value);
+                
+             // Clear the input buffer for the next number
+                inputBuffer = "";
+                
+                // Update the accumulator label with the new accumulator value
+                double accumulatorValue = controler.calculate();
+                accumulatorLabel.setText("Accumulator: " + accumulatorValue);
+         
+            }
+        });
+        
+     // Set the link with the controller for the "Clear" button being clicked
+        clearButton.setOnAction(event -> {
+            controler.clear(); // Call the controller's clear method
+            inputBuffer = "";
+            // Update the accumulator label to show the cleared accumulator
+            accumulatorLabel.setText("Accumulator: 0");
+        });
        
 
 

@@ -31,9 +31,11 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
     
  // Method to clear the stack 
-    public void clear() {
-        stack.clear();
+    public double calculate() {
+        double accumulatorValue = this.getAccumulator(); // Get the accumulator value
+        return accumulatorValue;
     }
+
     
  // Method to swap the two elements at the top of the stack 
     public void swap() {
@@ -58,6 +60,9 @@ public class CalculatorModel implements CalculatorModelInterface {
         }
     }
     
+    public void clearAccumulator() {
+    	this.accumulator = 0;
+    }
     
  // Method to add the last two elements of the stack and put the result back in the stack
     public void add() {
@@ -117,7 +122,13 @@ public class CalculatorModel implements CalculatorModelInterface {
             System.out.println("The stack is empty.");
         }
     }
-
+    
+    public void enter() {
+        // Push the current accumulator value onto the stack
+        stack.push(accumulator);
+    }
+    
+    
  // Method to multiply the last two elements of the stack and put the result back in the stack
     public void multiply() {
         if (stack.size() >= 2) {
@@ -140,6 +151,12 @@ public class CalculatorModel implements CalculatorModelInterface {
     public double getAccumulator() {
         return accumulator;
     }
+
+	@Override
+	public void clear() {
+		stack.clear();
+		accumulator = 0.0;
+	}
 
 
 

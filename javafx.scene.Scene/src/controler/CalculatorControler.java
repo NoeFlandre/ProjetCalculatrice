@@ -33,9 +33,22 @@ public class CalculatorControler implements CalculatorControlerInterface {
     }
     
     public double calculate() {
-    	return model.getAccumulator();
+    	return model.calculate();
+    }
+    
+    public void enter() {
+        model.enter();
+    }
+    
+    public void clearAccumulator() {
+    	model.clearAccumulator();
     }
 	
+    public void clear() {
+    	model.clear();
+    	model.clearAccumulator();
+    }
+    
 	public void performOperation(String operation) {
 	    // Check if the operation is a number represented as a string
 	    try {
@@ -70,20 +83,8 @@ public class CalculatorControler implements CalculatorControlerInterface {
 	 
 	  public static void main(String[] args) {
 		  
-		  CalculatorControler calculator = new CalculatorControler();
-	        
-		    calculator.performOperation("3");
-	        calculator.performOperation("5");
-	        calculator.performOperation("add");
-	        calculator.performOperation("2");
-	        calculator.performOperation("multiply");
-	        calculator.performOperation("4");
-	        calculator.performOperation("divide");
-	        calculator.performOperation("1");
-	        calculator.performOperation("subtract");
-	        System.out.println(calculator.model.getAccumulator());
-	        
-	        
+		  
+		    
 	    }
 
 }
