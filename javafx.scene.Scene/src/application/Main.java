@@ -141,6 +141,14 @@ public class Main extends Application {
             }
         });
         
+        dotButton.setOnAction(event -> {
+            // Append a dot (.) to the input buffer
+            inputBuffer += ".";
+            // Update the accumulator label to show the current state of the input buffer
+            accumulatorLabel.setText("Accumulator: " + inputBuffer);
+        });
+
+        
         
         
      // Set the link with the controller for the "Clear" button being clicked
