@@ -2,55 +2,74 @@ package Model;
 
 import java.util.Stack;
 
+/**
+ * The `CalculatorModel` class represents the model of a calculator. It contains methods for
+ * manipulating a stack and an accumulator for performing arithmetic operations.
+ */
 public class CalculatorModel implements CalculatorModelInterface {
-	// Attribute representing the stack of the calculator
-	private Stack<Double> stack;
-	// Attribute representing the accumulator of the calculator
-	private double accumulator;
-    
-	// Constructor of the class CalculatorModel
-	public CalculatorModel() {		
-		stack = new Stack<>();
-		accumulator = 0.0;
+
+    // Attribute representing the stack of the calculator
+    private Stack<Double> stack;
+
+    // Attribute representing the accumulator of the calculator
+    private double accumulator;
+
+    /**
+     * Constructs a new `CalculatorModel` object. Initializes the stack and accumulator.
+     */
+    public CalculatorModel() {
+        stack = new Stack<>();
+        accumulator = 0.0;
     }
-	
-	// Method to add an element in the stack
+
+    /**
+     * Adds an element to the stack.
+     *
+     * @param value The value to be pushed onto the stack.
+     */
     public void push(double value) {
-    	stack.push(value);
-        
+        stack.push(value);
     }
-    
- // Method to pop an element out of the stack
+
+    /**
+     * Pops an element from the stack if it's not empty; otherwise, displays a message.
+     */
     public void pop() {
         if (!stack.isEmpty()) {
             stack.pop();
-        } 
-        else {
+        } else {
             System.out.println("The stack is empty");
         }
     }
-    
- // Method to clear the stack 
+
+    /**
+     * Clears the stack and returns the value of the accumulator.
+     *
+     * @return The value of the accumulator.
+     */
     public double calculate() {
-        double accumulatorValue = this.getAccumulator(); // Get the accumulator value
-        return accumulatorValue;
+        return accumulator;
     }
 
-    
- // Method to swap the two elements at the top of the stack 
+    /**
+     * Swaps the two elements at the top of the stack if there are at least two elements;
+     * otherwise, displays a message.
+     */
     public void swap() {
         if (stack.size() >= 2) {
             double topElement = stack.pop();
             double secondTopElement = stack.pop();
             stack.push(topElement);
             stack.push(secondTopElement);
-        } 
-        else {
+        } else {
             System.out.println("There are not enough elements to make a swap");
         }
     }
-    
-    // Method to remove the last element from the stack without returning it
+
+    /**
+     * Removes the last element from the stack without returning it if the stack is not empty;
+     * otherwise, displays a message.
+     */
     public void drop() {
         if (!stack.isEmpty()) {
             int lastIndex = stack.size() - 1;
@@ -59,12 +78,18 @@ public class CalculatorModel implements CalculatorModelInterface {
             System.out.println("The stack is empty.");
         }
     }
-    
+
+    /**
+     * Clears the accumulator.
+     */
     public void clearAccumulator() {
-    	this.accumulator = 0;
+        this.accumulator = 0;
     }
-    
- // Method to add the last two elements of the stack and put the result back in the stack
+
+    /**
+     * Adds the last two elements of the stack and puts the result back in the stack if there are
+     * at least two elements; otherwise, displays a message.
+     */
     public void add() {
         if (stack.size() >= 2) {
             double topElement = stack.pop();
@@ -72,13 +97,15 @@ public class CalculatorModel implements CalculatorModelInterface {
             double result = topElement + secondTopElement;
             stack.push(result);
             accumulator = stack.peek();
-   
         } else {
             System.out.println("There are not enough elements in the stack to add");
         }
     }
-    
- // Method to subtract the last two elements of the stack and put the result back in the stack
+
+    /**
+     * Subtracts the last two elements of the stack and puts the result back in the stack if there are
+     * at least two elements; otherwise, displays a message.
+     */
     public void subtract() {
         if (stack.size() >= 2) {
             double topElement = stack.pop();
@@ -86,13 +113,17 @@ public class CalculatorModel implements CalculatorModelInterface {
             double result = secondTopElement - topElement;
             stack.push(result);
             accumulator = stack.peek();
-
         } else {
             System.out.println("There are not enough elements in the stack to subtract.");
         }
     }
-    
- // Method to divide the last two elements of the stack and put the result back in the stack
+
+    /**
+     * Divides the last two elements of the stack and puts the result back in the stack if there are
+     * at least two elements; otherwise, displays a message. Division by zero is handled.
+     *
+     * @param
+     */
     public void divide() {
         if (stack.size() >= 2) {
             double topElement = stack.pop();
@@ -101,7 +132,6 @@ public class CalculatorModel implements CalculatorModelInterface {
                 double result = secondTopElement / topElement;
                 stack.push(result);
                 accumulator = stack.peek();
-
             } else {
                 System.out.println("Division by zero is not allowed.");
             }
@@ -109,27 +139,33 @@ public class CalculatorModel implements CalculatorModelInterface {
             System.out.println("There are not enough elements in the stack to divide.");
         }
     }
-    
- // Method to negate (change sign) of the last element on the stack
+
+    /**
+     * Negates (changes the sign of) the last element on the stack if the stack is not empty;
+     * otherwise, displays a message.
+     */
     public void opposite() {
         if (!stack.isEmpty()) {
             double topElement = stack.pop();
             double result = -topElement;
             stack.push(result);
             accumulator = stack.peek();
-
         } else {
             System.out.println("The stack is empty.");
         }
     }
-    
+
+    /**
+     * Pushes the current accumulator value onto the stack.
+     */
     public void enter() {
-        // Push the current accumulator value onto the stack
         stack.push(accumulator);
     }
-    
-    
- // Method to multiply the last two elements of the stack and put the result back in the stack
+
+    /**
+     * Multiplies the last two elements of the stack and puts the result back in the stack if there are
+     * at least two elements; otherwise, displays a message.
+     */
     public void multiply() {
         if (stack.size() >= 2) {
             double topElement = stack.pop();
@@ -142,22 +178,30 @@ public class CalculatorModel implements CalculatorModelInterface {
         }
     }
 
- // Return a copy of the stack
+    /**
+     * Clears both the stack and the accumulator.
+     */
+    @Override
+    public void clear() {
+        stack.clear();
+        accumulator = 0.0;
+    }
+
+    /**
+     * Returns a copy of the stack.
+     *
+     * @return A copy of the stack.
+     */
     public Stack<Double> getStack() {
         return stack;
     }
- 
- // Return a copy of the accumulator
+
+    /**
+     * Returns a copy of the accumulator value.
+     *
+     * @return The value of the accumulator.
+     */
     public double getAccumulator() {
         return accumulator;
     }
-
-	@Override
-	public void clear() {
-		stack.clear();
-		accumulator = 0.0;
-	}
-
-
-
 }
