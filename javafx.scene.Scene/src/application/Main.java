@@ -95,9 +95,9 @@ public class Main extends Application {
         buttonGrid.add(clearButton, 3, 4);
         
      // Create the "Comma" button
-        Button commaButton = new Button(",");
-        commaButton.setMinSize(40, 40);
-        buttonGrid.add(commaButton, 1, 3);
+        Button dotButton = new Button(".");
+        dotButton.setMinSize(40, 40);
+        buttonGrid.add(dotButton, 1, 3);
         
      // Add event handlers to operator buttons
         addButton.setOnAction(event -> {
@@ -141,6 +141,8 @@ public class Main extends Application {
             }
         });
         
+        
+        
      // Set the link with the controller for the "Clear" button being clicked
         clearButton.setOnAction(event -> {
             controler.clear(); // Call the controller's clear method
@@ -172,7 +174,7 @@ public class Main extends Application {
         multiplyButton.setStyle(operatorButtonStyle);
         divideButton.setStyle(operatorButtonStyle);
         equalsButton.setStyle(operatorButtonStyle);
-        commaButton.setStyle(operatorButtonStyle);
+        dotButton.setStyle(operatorButtonStyle);
         
      // Set the style for the "Enter" button as a dark green button
         String enterButtonStyle = "-fx-background-color: #006400; " + // Dark green background color
