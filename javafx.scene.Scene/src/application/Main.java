@@ -24,6 +24,11 @@ public class Main extends Application {
     // Buffer to hold user input
     private String inputBuffer = "";
 
+    
+    public String getInputBuffer() {
+        return inputBuffer;
+    }
+
     @Override
     public void start(Stage primaryStage) {
         
@@ -111,8 +116,17 @@ public class Main extends Application {
         });
 
         subtractButton.setOnAction(event -> {
-            controler.performOperation("subtract"); // Call the controller's subtraction method
+            if (!inputBuffer.isEmpty()) {
+            	double value = Double.parseDouble(inputBuffer);
+                double oppositeValue = -value;
+                inputBuffer = String.valueOf(oppositeValue);
+                accumulatorLabel.setText("Accumulator: " + inputBuffer);
+                
+            } else {
+                controler.performOperation("subtract"); // Call the controller's subtraction method
+            }
         });
+
 
         multiplyButton.setOnAction(event -> {
             controler.performOperation("multiply"); // Call the controller's multiplication method
@@ -127,6 +141,8 @@ public class Main extends Application {
             double accumulatorValue = controler.calculate(); 
             accumulatorLabel.setText("Result: " + accumulatorValue); 
             controler.clearAccumulator();
+         // Clear the input buffer for the next number
+            inputBuffer = "";
         });
 
         enterButton.setOnAction(event -> {
@@ -140,7 +156,7 @@ public class Main extends Application {
                 
                 // Update the accumulator label with the new accumulator value
                 double accumulatorValue = controler.calculate();
-                accumulatorLabel.setText("Accumulator: " + accumulatorValue);
+                accumulatorLabel.setText("Accumulator: " + 0);
             }
         });
 
@@ -158,6 +174,8 @@ public class Main extends Application {
             // Update the accumulator label to show the cleared accumulator
             accumulatorLabel.setText("Accumulator: 0");
         });
+        
+
 
         // Set style for the buttons
 
