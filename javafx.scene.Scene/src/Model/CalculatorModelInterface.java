@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * The `CalculatorModelInterface` defines the interface for the model of a calculator.
+ * It includes methods for manipulating a stack and performing arithmetic operations.
+ */
 public interface CalculatorModelInterface {
     void push(double value);
     void pop();
@@ -13,4 +17,3 @@ public interface CalculatorModelInterface {
     void multiply();
     void enter();
 }
-

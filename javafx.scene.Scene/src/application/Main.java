@@ -24,7 +24,10 @@ public class Main extends Application {
     // Buffer to hold user input
     private String inputBuffer = "";
 
-    
+    /**
+     * Getter for the input buffer.
+     * @return The current contents of the input buffer.
+     */
     public String getInputBuffer() {
         return inputBuffer;
     }
@@ -58,6 +61,7 @@ public class Main extends Application {
         for (int i = 9; i >= 0; i--) {
             Button digitButton = new Button(Integer.toString(i));
             digitButton.setMinSize(40, 40);
+            
             // Add each digit button to the grid
             buttonGrid.add(digitButton, (9 - i) % 3, (9 - i) / 3);
             
@@ -117,16 +121,14 @@ public class Main extends Application {
 
         subtractButton.setOnAction(event -> {
             if (!inputBuffer.isEmpty()) {
-            	double value = Double.parseDouble(inputBuffer);
+                double value = Double.parseDouble(inputBuffer);
                 double oppositeValue = -value;
                 inputBuffer = String.valueOf(oppositeValue);
                 accumulatorLabel.setText("Accumulator: " + inputBuffer);
-                
             } else {
                 controler.performOperation("subtract"); // Call the controller's subtraction method
             }
         });
-
 
         multiplyButton.setOnAction(event -> {
             controler.performOperation("multiply"); // Call the controller's multiplication method
@@ -141,7 +143,7 @@ public class Main extends Application {
             double accumulatorValue = controler.calculate(); 
             accumulatorLabel.setText("Result: " + accumulatorValue); 
             controler.clearAccumulator();
-         // Clear the input buffer for the next number
+            // Clear the input buffer for the next number
             inputBuffer = "";
         });
 
@@ -174,8 +176,6 @@ public class Main extends Application {
             // Update the accumulator label to show the cleared accumulator
             accumulatorLabel.setText("Accumulator: 0");
         });
-        
-
 
         // Set style for the buttons
 
@@ -239,3 +239,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+

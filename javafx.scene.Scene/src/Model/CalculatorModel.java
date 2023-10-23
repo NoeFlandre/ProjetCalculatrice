@@ -122,7 +122,7 @@ public class CalculatorModel implements CalculatorModelInterface {
      * Divides the last two elements of the stack and puts the result back in the stack if there are
      * at least two elements; otherwise, displays a message. Division by zero is handled.
      *
-     * @param
+     * @param None
      */
     public void divide() {
         if (stack.size() >= 2) {

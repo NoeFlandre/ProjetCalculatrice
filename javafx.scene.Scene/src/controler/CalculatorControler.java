@@ -19,15 +19,23 @@ public class CalculatorControler implements CalculatorControlerInterface {
         model = new CalculatorModel();
     }
 
+    /**
+     * Signals a change in the accumulator due to user input and displays it.
+     *
+     * @param accu The updated accumulator value.
+     */
     @Override
     public void change(String accu) {
-        // Method handling the changes on the accumulator due to the user's input and displaying it
         System.out.println("Accumulator changed to: " + accu);
     }
 
+    /**
+     * Signals a change in the stack due to user input and displays it.
+     *
+     * @param stackData The updated stack data.
+     */
     @Override
     public void change(Stack<Double> stackData) {
-        // Method handling the changes on the stack due to the user's input and displaying it
         System.out.println("Stack changed to: " + stackData);
     }
 
