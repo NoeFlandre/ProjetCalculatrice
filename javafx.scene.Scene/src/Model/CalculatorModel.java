@@ -43,7 +43,7 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     /**
-     * Clears the stack and returns the value of the accumulator.
+     * Returns the value of the accumulator.
      *
      * @return The value of the accumulator.
      */
